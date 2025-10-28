@@ -1,5 +1,6 @@
-package com.example.proyectofinal;
+package controllers;
 
+import com.example.proyectofinal.App;
 import javafx.application.Application;
 
 public class Launcher {
