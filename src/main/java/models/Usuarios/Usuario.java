@@ -3,22 +3,22 @@ import models.enums.TipoUsuario;
 
 public abstract class Usuario {
     protected String id;
-    protected String nombre;
-    protected String email;
-    protected String contraseña;
+    protected String name;
+    protected String username;
+    protected String password;
     protected TipoUsuario tipoUsuario;
     protected boolean activo;
 
-    public Usuario(String id, String nombre, String email, String contraseña,  TipoUsuario tipoUsuario) {
+    public Usuario(String id, String name, String username, String password,  TipoUsuario tipoUsuario) {
         this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.contraseña = contraseña;
+        this.name = name;
+        this.username = username;
+        this.password = password;
         this.tipoUsuario = tipoUsuario;
         this.activo = true;
     }
-    public boolean validarContraseña(String contraseña) {
-        return this.contraseña.equals(contraseña);
+    public boolean validarPassword(String password) {
+        return this.password.equals(password);
     }
     public abstract String getRolDescripcion();
 
@@ -26,16 +26,16 @@ public abstract class Usuario {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
     public TipoUsuario getTipoUsuario() {
@@ -45,12 +45,12 @@ public abstract class Usuario {
         return activo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setActivo(boolean activo) {

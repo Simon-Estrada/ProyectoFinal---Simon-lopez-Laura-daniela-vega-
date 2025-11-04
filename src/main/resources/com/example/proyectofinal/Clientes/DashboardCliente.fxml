@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Separator?>
 <BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Clientes.DashboardClienteController">
 
     <left>
@@ -17,20 +19,25 @@
             </padding>
 
             <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="BIENVENIDO al Banco UQ" />
+         <Label prefHeight="28.0" prefWidth="66.0" style="-fx-text-fill: white;" text="Cliente">
+            <font>
+               <Font name="Verdana Bold Italic" size="17.0" />
+            </font>
+         </Label>
             <Label fx:id="lblNombreUsuario" style="-fx-text-fill: #9DB5C9;" text="[Nombre de Usuario]" />
 
             <Separator prefWidth="200.0" />
 
-            <Button mnemonicParsing="false" onAction="#onRealizarTransferencias" prefWidth="180.0" style="-fx-background-color: #9DB5C9; -fx-background-radius: 10;" text="Transferencias">
+            <Button fx:id="btnTransferencias" mnemonicParsing="false" onAction="#onRealizarTransferencias" prefWidth="180.0" style="-fx-background-color: #9DB5C9; -fx-background-radius: 10;" text="Transferencias">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></Button>
-            <Button mnemonicParsing="false" onAction="#cargarConsultarCuentas" prefWidth="180.0" style="-fx-background-color: #9DB5C9; -fx-background-radius: 10;" text="Mis Cuentas">
+            <Button fx:id="btnMisCuentas" mnemonicParsing="false" onAction="#cargarConsultarCuentas" prefWidth="180.0" style="-fx-background-color: #9DB5C9; -fx-background-radius: 10;" text="Mis Cuentas">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></Button>
 
-            <VBox VBox.vgrow="ALWAYS" /> <Button mnemonicParsing="false" onAction="#cerrarSesion" prefWidth="180.0" style="-fx-background-color: #E84A5F; -fx-background-radius: 10;" text="Cerrar Sesión">
+            <VBox VBox.vgrow="ALWAYS" /> <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion" prefWidth="180.0" style="-fx-background-color: #E84A5F; -fx-background-radius: 10;" text="Cerrar Sesión">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></Button>

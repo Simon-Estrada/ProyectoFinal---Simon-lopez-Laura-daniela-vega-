@@ -16,12 +16,12 @@ public class SesionService {
     }
     public void iniciarSesion(Usuario usuario) {
         this.usuarioActual = usuario;
-        System.out.println("Sesión iniciada: " + usuario.getNombre() + " (" + usuario.getRolDescripcion() + ")");
+        System.out.println("Sesión iniciada: " + usuario.getName() + " (" + usuario.getRolDescripcion() + ")");
     }
 
     public void cerrarSesion() {
         if (usuarioActual != null) {
-            System.out.println("Sesión cerrada: " + usuarioActual.getNombre());
+            System.out.println("Sesión cerrada: " + usuarioActual.getName());
             this.usuarioActual = null;
         }
     }
