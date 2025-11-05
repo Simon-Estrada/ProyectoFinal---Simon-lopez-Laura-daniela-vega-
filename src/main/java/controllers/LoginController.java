@@ -50,18 +50,24 @@ public class LoginController {
 
         Object usuario = verificarUsuario(username, password);
 
-        if (usuario instanceof Admin) {
-            cambiarEscena(event, "/com/example/proyectofinal/Administradores/DashboardAdministradores.fxml", "Panel de Administrador");
-        } else if (usuario instanceof Cashier) {
-            cambiarEscena(event, "/com/example/proyectofinal/Cajeros/DashboardCajero.fxml", "Panel de Cajero");
-        } else if (usuario instanceof Client) {
-            cambiarEscena(event, "/com/example/proyectofinal/Clientes/DashboardCliente.fxml", "Panel de Cliente");
-        } else {
-            mostrarAlerta("Error", "Usuario o contraseña incorrectos", Alert.AlertType.ERROR);
+        if(usuario==null){
+            mostrarAlerta("Error", "Usuario o contraseña incorrectos.", Alert.AlertType.ERROR);
             return;
         }
+        String rutaFXML = "";
+        String titulo= "";
 
-        mostrarAlerta("Login Exitoso", "Usted ha iniciado sesión correctamente", Alert.AlertType.INFORMATION);
+        if (usuario instanceof Admin) {
+            rutaFXML = "/com/example/proyectofinal/Administradores/DashboardAdministradores.fxml";
+            titulo = "Admin";
+        } else if (usuario instanceof Cashier) {
+            rutaFXML = "/com/example/proyectofinal/Cajeros/DashboardCajero.fxml";
+            titulo = "Cashier";
+        } else if (usuario instanceof Client) {
+            rutaFXML = "/com/example/proyectofinal/Clientes/DashboardCliente.fxml";
+            titulo = "Client";
+        }
+        cambiarEscena(event,rutaFXML,titulo);
     }
 
     private Object verificarUsuario(String username, String password) {
