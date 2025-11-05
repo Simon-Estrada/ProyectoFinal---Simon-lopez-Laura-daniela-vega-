@@ -8,6 +8,7 @@ public class Cajero extends Usuario {
     //Depositos y retiros
     //Consulta saldo
     //Transferencias
+    hola
     //Generacion de reportes no avanzados
     private String codigoEmpleado;
     private String turno;
