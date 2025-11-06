@@ -131,7 +131,7 @@ public class LoginController {
     }
     private void abrirVistaAdmin(Admin admin) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Admin/DashboardAdmin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Administradores/DashboardAdministradores.fxml"));
             Parent root = loader.load();
 
             DashboardAdministradoresController controller = loader.getController();
