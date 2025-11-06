@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Cajeros.DashboardCajeroController">
+<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Cajeros.DashboardCajeroController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #435161;" BorderPane.alignment="CENTER">

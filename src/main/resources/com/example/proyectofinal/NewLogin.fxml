@@ -11,11 +11,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox alignment="CENTER" prefHeight="500.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<HBox alignment="CENTER" prefHeight="500.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="427.0">
          <children>
@@ -34,7 +32,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtUsername">
+                  <TextField fx:id="txtId" promptText="Ingrese su identificacion.">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -50,7 +48,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <PasswordField fx:id="txtPassword">
+                  <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña.">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -58,9 +56,9 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </PasswordField>
-                  <Button fx:id="btnIniciarSesion" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onIniciarSesion" style="-fx-background-color: #E0D1D4;" text="Iniciar Sesion">
+                  <Button fx:id="btnIniciarSesion" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onIniciarSesion" style="-fx-background-color: #305CDE;" text="Iniciar Sesion" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -81,17 +79,10 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="427.0" style="-fx-background-color: #1D1617;">
          <children>
-            <ImageView fitHeight="287.0" fitWidth="311.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="501.0" fitWidth="427.0" pickOnBounds="true">
                <image>
-                  <Image url="@Images/Gato.jpg" />
+                  <Image url="@Images/FondoAzul.jpg" />
                </image>
-               <effect>
-                  <DropShadow spread="0.19">
-                     <color>
-                        <Color red="0.6947368383407593" green="0.6947368383407593" blue="0.6947368383407593" />
-                     </color>
-                  </DropShadow>
-               </effect>
             </ImageView>
          </children>
       </VBox>

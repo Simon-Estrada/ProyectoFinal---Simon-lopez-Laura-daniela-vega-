@@ -1,10 +1,10 @@
 package controllers;
 
 
+import controllers.Clientes.DashboardClienteController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -12,11 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Usuarios.*;
-import models.enums.TipoUsuario;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class LoginController {
@@ -24,66 +22,53 @@ public class LoginController {
     private Button btnIniciarSesion;
 
     @FXML
-    private TextField txtUsername;
+    private TextField txtId;
 
     @FXML
     private TextField txtPassword;
 
-    private ArrayList<Admin> adminList = new ArrayList<>();
-    private ArrayList<Cashier> cashierList = new ArrayList<>();
-    private ArrayList<Client> clientList = new ArrayList<>();
+    private GestionUsuarios gestor;
     @FXML
     public void initialize() {
-        adminList.add(new Admin("1090275087", "Simon", "wooseoksimon@gmail.com", "Enhypen2008", "Administracion general"));
-        cashierList.add(new Cashier("33817767","Adria", "dulce1100@gmail.com", "angeles1", "2908"));
-        clientList.add(new Client("24575419", "Mary", "foreroluzmarina59@gmail.com", "luzma59", "3146979602", "calle 30c#27b-08"));
-
-
-
+        gestor = new GestionUsuarios();
+        if(!gestor.cargarUsuarios()){
+            mostrarAlerta("Advertencia", "Ocurrio un error. Se iniciara con datos vacios",
+                    Alert.AlertType.WARNING);
+        }
+        if(gestor.getAdminList().isEmpty()&&
+        gestor.getCashierList().isEmpty()&&
+        gestor.getClientList().isEmpty()){
+            Admin adminDefault = new Admin("1", "Admin", "admin@gmail.com", "admin123", "Sistemas");
+            gestor.agregarAdmin(adminDefault);
+        }
     }
     @FXML
     private void onIniciarSesion(ActionEvent event) throws IOException {
-        String username = txtUsername.getText();
+        String id = txtId.getText();
         String password = txtPassword.getText();
 
-        if (!validarCampos()) return;
-
-        Object usuario = verificarUsuario(username, password);
-
-        if(usuario==null){
-            mostrarAlerta("Error", "Usuario o contraseña incorrectos.", Alert.AlertType.ERROR);
-            return;
+        for (Client client : gestor.getClientList()) {
+            if (client.getId().equals(id) && client.getPassword().equals(password)) {
+                abrirVistaCliente(client);
+                return;
+            }
         }
-        String rutaFXML = "";
-        String titulo= "";
-
-        if (usuario instanceof Admin) {
-            rutaFXML = "/com/example/proyectofinal/Administradores/DashboardAdministradores.fxml";
-            titulo = "Admin";
-        } else if (usuario instanceof Cashier) {
-            rutaFXML = "/com/example/proyectofinal/Cajeros/DashboardCajero.fxml";
-            titulo = "Cashier";
-        } else if (usuario instanceof Client) {
-            rutaFXML = "/com/example/proyectofinal/Clientes/DashboardCliente.fxml";
-            titulo = "Client";
+        for (Cashier cashier : gestor.getCashierList()) {
+            if (cashier.getId().equals(id) && cashier.getPassword().equals(password)) {
+                abrirVistaCashier(cashier);
+                return;
+            }
         }
-        cambiarEscena(event,rutaFXML,titulo);
-    }
-
-    private Object verificarUsuario(String username, String password) {
-        for (Admin a : adminList) {
-            if (a.getUsername().equals(username) && a.getPassword().equals(password)) return a;
+        for (Admin admin : gestor.getAdminList()) {
+            if (admin.getId().equals(id) && admin.getPassword().equals(password)) {
+                abrirVistaAdmin(admin);
+                return;
+            }
         }
-        for (Cashier c : cashierList) {
-            if (c.getUsername().equals(username) && c.getPassword().equals(password)) return c;
-        }
-        for (Client cl : clientList) {
-            if (cl.getUsername().equals(username) && cl.getPassword().equals(password)) return cl;
-        }
-        return null;
+        mostrarAlerta("Error", "Email o contraseña incorrectos.", Alert.AlertType.ERROR);
     }
     private boolean validarCampos() {
-        if (txtUsername.getText().trim().isEmpty() ||
+        if (txtId.getText().trim().isEmpty() ||
                 txtPassword.getText().trim().isEmpty())
         {
             mostrarAlerta("Error de validación", "Todos los campos son obligatorios.", Alert.AlertType.WARNING);
@@ -98,15 +83,71 @@ public class LoginController {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
-    private void cambiarEscena(ActionEvent event, String fxmlFile, String titulo) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        Parent root = loader.load();
+    private void abrirVistaCliente(Client client) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Clientes/DashboardCliente.fxml"));
+            Parent root = loader.load();
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle(titulo);
-        stage.show();
+            DashboardClienteController controller = loader.getController();
+            controller.setClient(client);
+            controller.setGestor(gestor);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Panel Cliente - " + client.getName());
+            stage.show();
+
+            Stage loginStage = (Stage) txtId.getScene().getWindow();
+            loginStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo abrir la vista del client", Alert.AlertType.ERROR);
+        }
+    }
+    private void abrirVistaCashier(Cashier cashier) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/DashboardCajero.fxml"));
+            Parent root = loader.load();
+
+            DashboardClienteController controller = loader.getController();
+            controller.setCashier(cashier);
+            controller.setGestor(gestor);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Panel Cajero - " + cashier.getName());
+            stage.show();
+
+            Stage loginStage = (Stage) txtId.getScene().getWindow();
+            loginStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo abrir la vista del cajero", Alert.AlertType.ERROR);
+        }
+    }
+    private void abrirVistaAdmin(Admin admin) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/DashboardCajero.fxml"));
+            Parent root = loader.load();
+
+            DashboardClienteController controller = loader.getController();
+            controller.setAdmin(admin);
+            controller.setGestor(gestor);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Panel Cajero - " + admin.getName());
+            stage.show();
+
+            Stage loginStage = (Stage) txtId.getScene().getWindow();
+            loginStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo abrir la vista del Administrador", Alert.AlertType.ERROR);
+        }
     }
 }
 

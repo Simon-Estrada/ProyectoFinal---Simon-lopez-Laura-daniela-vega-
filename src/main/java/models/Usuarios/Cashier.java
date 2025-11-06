@@ -1,7 +1,5 @@
 package models.Usuarios;
 
-import models.enums.TipoUsuario;
-
 public class Cashier extends Usuario {
     //Funcionalidades de cajero
     //Registro de clientes
@@ -12,7 +10,7 @@ public class Cashier extends Usuario {
     private String workerId;
 
     public Cashier(String id, String name, String username, String password, String workerId){
-        super(id, name,username, password, TipoUsuario.CAJERO);
+        super(id, name,username, password);
         this.workerId = workerId;
     }
     @Override

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.Separator?>
-<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Clientes.DashboardClienteController">
+<BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Clientes.DashboardClienteController">
 
     <left>
         <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #435161;" BorderPane.alignment="CENTER">

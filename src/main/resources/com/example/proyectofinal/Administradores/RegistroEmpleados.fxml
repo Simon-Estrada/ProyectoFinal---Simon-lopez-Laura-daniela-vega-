@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Administradores.RegistroEmpleadosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Administradores.RegistroEmpleadosController">
     <children>
         <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Empleados">
             <font>
