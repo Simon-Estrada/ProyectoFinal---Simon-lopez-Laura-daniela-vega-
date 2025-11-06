@@ -40,13 +40,12 @@ public class GestionUsuarios {
         this.clientList = clientList;
     }
     public boolean cargarUsuarios() {
-        File file = new File(ARCHIVO);
+        File archivo = new File(ARCHIVO);
         if(!archivo.exists()){
-            System.out.println("No se encontro el archivo");
             return true;
         }
         try(BufferedReader reader = new BufferedReader(new FileReader(archivo))){
-            String line;
+            String linea;
             while((linea = reader.readLine())!=null){
                 String[]datos = linea.split(",");
                 String tipo = datos[0];

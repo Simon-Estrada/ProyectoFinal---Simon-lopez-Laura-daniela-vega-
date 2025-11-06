@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import models.Usuarios.Cashier;
+import models.Usuarios.GestionUsuarios;
 
 public class DashboardCajeroController {
 
@@ -35,6 +37,17 @@ public class DashboardCajeroController {
 
     @FXML
     private BorderPane mainBorderPane;
+    private Cashier cashier;
+    private GestionUsuarios gestionUsuarios;
+
+
+    public void setCashier(Cashier cashier){
+        this.cashier = cashier;
+        lblNombreUsuario.setText(cashier.getName()+" "+cashier.getId());
+    }
+    public void setGestor(GestionUsuarios gestor){
+        this.gestionUsuarios = gestor;
+    }
 
     @FXML
     void onCerrarSesion(ActionEvent event) {

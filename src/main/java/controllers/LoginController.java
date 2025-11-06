@@ -1,6 +1,8 @@
 package controllers;
 
 
+import controllers.Administradores.DashboardAdministradoresController;
+import controllers.Cajeros.DashboardCajeroController;
 import controllers.Clientes.DashboardClienteController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -110,7 +112,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/DashboardCajero.fxml"));
             Parent root = loader.load();
 
-            DashboardClienteController controller = loader.getController();
+            DashboardCajeroController controller = loader.getController();
             controller.setCashier(cashier);
             controller.setGestor(gestor);
 
@@ -129,10 +131,10 @@ public class LoginController {
     }
     private void abrirVistaAdmin(Admin admin) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/DashboardCajero.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Admin/DashboardAdmin.fxml"));
             Parent root = loader.load();
 
-            DashboardClienteController controller = loader.getController();
+            DashboardAdministradoresController controller = loader.getController();
             controller.setAdmin(admin);
             controller.setGestor(gestor);
 

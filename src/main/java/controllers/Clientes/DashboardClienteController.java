@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import models.Usuarios.Client;
+import models.Usuarios.GestionUsuarios;
 
 public class DashboardClienteController {
 
@@ -26,6 +28,19 @@ public class DashboardClienteController {
 
     @FXML
     private BorderPane mainBorderPane;
+
+    private Client client;
+    private GestionUsuarios gestionUsuarios;
+
+
+    public void setClient(Client client){
+        this.client = client;
+        lblNombreUsuario.setText(client.getName()+" "+client.getId());
+    }
+    public void setGestor(GestionUsuarios gestor){
+        this.gestionUsuarios = gestor;
+    }
+
 
 
     @FXML
