@@ -1,2 +1,2 @@
 Admin,1,Admin,admin@gmail.com,admin123,Sistemas
-Admin,1090275087,Simon Lopez,simon@gmail.com,simon123,Administracion general
+Admin,1090275087,Simon Lopez,simon@gmail.com,simon123,Administracion
