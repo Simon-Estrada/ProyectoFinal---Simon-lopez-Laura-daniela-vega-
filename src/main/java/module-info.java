@@ -1,7 +1,7 @@
 module com.example.proyectofinal {
     requires javafx.controls;
     requires javafx.fxml;
-
+    requires javafx.graphics;
 
 
     opens com.example.proyectofinal to javafx.fxml;
@@ -11,5 +11,6 @@ module com.example.proyectofinal {
     opens controllers.Administradores to javafx.fxml;
     opens controllers.Cajeros to javafx.fxml;
     opens controllers.Clientes to javafx.fxml;
+    exports controllers.Administradores;
 
 }

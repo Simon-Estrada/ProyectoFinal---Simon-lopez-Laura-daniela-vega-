@@ -1,14 +1,18 @@
 package controllers.Administradores;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import models.Usuarios.Admin;
-import models.Usuarios.Cashier;
 import models.Usuarios.GestionUsuarios;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class DashboardAdministradoresController {
 
@@ -22,7 +26,7 @@ public class DashboardAdministradoresController {
     private Button btnRegistroEmpleados;
 
     @FXML
-    private AnchorPane contentPane;
+    private AnchorPane panelContenido;
 
     @FXML
     private Label lblNombreUsuario;
@@ -32,28 +36,38 @@ public class DashboardAdministradoresController {
     private Admin admin;
     private GestionUsuarios gestionUsuarios;
 
-    public void setAdmin(Admin admin){
+    public void setAdmin(Admin admin) {
         this.admin = admin;
-        lblNombreUsuario.setText(admin.getName()+" "+admin.getId());
+        lblNombreUsuario.setText(admin.getName() + " " + admin.getId());
     }
-    public void setGestor(GestionUsuarios gestor){
+
+    public void setGestor(GestionUsuarios gestor) {
         this.gestionUsuarios = gestor;
     }
 
-    @FXML
-    void OnRegistrarEmpleados(ActionEvent event) {
-
+    private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
     }
 
     @FXML
-    void cargarEmpleados(ActionEvent event) {
-
+    void OnRegistrarEmpleados() throws IOException {
+        AnchorPane panelRegistrarEmpleadosFXML = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Administradores/RegistroEmpleados.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelRegistrarEmpleadosFXML);
     }
-
     @FXML
-    void onCerrarSesion(ActionEvent event) {
+    void cargarEmpleados() throws IOException {
+        AnchorPane panelCargarEmpleadosFXML = FXMLLoader.load(getClass().getResource("/com/example/proyectofinal/Administradores/TablaEmpleados.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelCargarEmpleadosFXML);
+    }
+    @FXML
+    void onCerrarSesion(){
 
     }
 
 }
-

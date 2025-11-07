@@ -2,12 +2,15 @@ package controllers.Cajeros;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import models.Usuarios.Cashier;
 import models.Usuarios.GestionUsuarios;
+
+import java.io.IOException;
 
 public class DashboardCajeroController {
 
@@ -30,7 +33,7 @@ public class DashboardCajeroController {
     private Button btnRegistrarCliente;
 
     @FXML
-    private AnchorPane contentPane;
+    private AnchorPane panelContenido;
 
     @FXML
     private Label lblNombreUsuario;
@@ -55,28 +58,38 @@ public class DashboardCajeroController {
     }
 
     @FXML
-    void onConsultarSaldo(ActionEvent event) {
-
+    void onConsultarSaldo() throws IOException {
+        AnchorPane panelConsultarSaldoFXML = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/ConsultaSaldo.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelConsultarSaldoFXML);
     }
 
     @FXML
-    void onRealizarDeposito(ActionEvent event) {
-
+    void onRealizarDeposito() throws IOException {
+        AnchorPane panelRealizarDepositos = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/DepositosView.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelRealizarDepositos);
     }
 
     @FXML
-    void onRealizarTransferencias(ActionEvent event) {
-
+    void onRealizarTransferencias() throws IOException {
+        AnchorPane panelRealizarTransferencias = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/TransferenciasView.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelRealizarTransferencias);
     }
 
     @FXML
-    void onRegistrarCliente(ActionEvent event) {
-
+    void onRegistrarCliente() throws IOException {
+        AnchorPane panelRegistrarClientes = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/RegistroClientes.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelRegistrarClientes);
     }
 
     @FXML
-    void onRetirar(ActionEvent event) {
-
+    void onRetirar() throws IOException {
+        AnchorPane panelRetirar = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/RetirosView.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelRetirar);
     }
 
 }
