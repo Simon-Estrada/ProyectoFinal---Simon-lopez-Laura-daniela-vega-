@@ -46,6 +46,9 @@ public class LoginController {
     }
     @FXML
     private void onIniciarSesion(ActionEvent event) throws IOException {
+        if (!validarCampos()) {
+            return;
+        }
         String id = txtId.getText();
         String password = txtPassword.getText();
 
