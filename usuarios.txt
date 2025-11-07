@@ -1,3 +1,4 @@
 Admin,1,Admin,admin@gmail.com,admin123,Sistemas
 Admin,1090275087,Simon Lopez,simon@gmail.com,simon123,Administracion
 Cashier,33817767,Adriana Estrada,adriana@gmail.com,adriana456,mssarm2
+Client,24575419,Luz Marina,marina@gmail.com,marina123,3137148918,armenia

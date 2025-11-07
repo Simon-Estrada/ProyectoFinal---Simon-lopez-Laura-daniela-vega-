@@ -2,12 +2,15 @@ package controllers.Clientes;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import models.Usuarios.Client;
 import models.Usuarios.GestionUsuarios;
+
+import java.io.IOException;
 
 public class DashboardClienteController {
 
@@ -21,7 +24,7 @@ public class DashboardClienteController {
     private Button btnTransferencias;
 
     @FXML
-    private AnchorPane contentPane;
+    private AnchorPane panelContenido;
 
     @FXML
     private Label lblNombreUsuario;
@@ -44,8 +47,10 @@ public class DashboardClienteController {
 
 
     @FXML
-    void cargarConsultarCuentas(ActionEvent event) {
-
+    void cargarConsultarCuentas() throws IOException {
+        AnchorPane panelConsultarCuentasFXML = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Clientes/ResumenCuentas.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelConsultarCuentasFXML);
     }
 
     @FXML
@@ -54,8 +59,10 @@ public class DashboardClienteController {
     }
 
     @FXML
-    void onRealizarTransferencias(ActionEvent event) {
-
+    void onRealizarTransferencias() throws IOException {
+        AnchorPane panelRealizarTransferncias = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Clientes/TransaccionesView.fxml"));
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelRealizarTransferncias);
     }
 
 }
