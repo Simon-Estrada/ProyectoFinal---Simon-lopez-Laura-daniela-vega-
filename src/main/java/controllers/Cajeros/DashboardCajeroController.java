@@ -97,7 +97,10 @@ public class DashboardCajeroController {
 
     @FXML
     void onRegistrarCliente() throws IOException {
-        AnchorPane panelRegistrarClientes = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/RegistroClientes.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/RegistroClientes.fxml"));
+        AnchorPane panelRegistrarClientes = loader. load();
+        RegistroClientesController controllerHijo = loader.getController();
+        controllerHijo.setPanelContenido(panelContenido);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelRegistrarClientes);
     }

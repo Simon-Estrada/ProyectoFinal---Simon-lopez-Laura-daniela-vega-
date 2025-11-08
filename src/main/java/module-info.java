@@ -12,5 +12,7 @@ module com.example.proyectofinal {
     opens controllers.Cajeros to javafx.fxml;
     opens controllers.Clientes to javafx.fxml;
     exports controllers.Administradores;
+    exports models.CuentasBancarias;
+    opens models.CuentasBancarias to javafx.fxml;
 
 }

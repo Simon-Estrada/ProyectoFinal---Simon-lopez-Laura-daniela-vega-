@@ -49,7 +49,7 @@ public class LoginController {
         if (!validarCampos()) {
             return;
         }
-        String id = txtId.getText();
+        String id = txtId.getText().trim();
         String password = txtPassword.getText();
 
         for (Client client : gestor.getClientList()) {

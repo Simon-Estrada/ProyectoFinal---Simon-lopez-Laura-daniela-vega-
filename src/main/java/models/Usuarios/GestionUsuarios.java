@@ -50,7 +50,7 @@ public class GestionUsuarios {
                 String[]datos = linea.split(",");
                 String tipo = datos[0];
 
-                switch(tipo){
+                switch(tipo.trim()){
                     case "Admin":
                         Admin admin = new Admin(datos[1], datos[2], datos[3], datos[4], datos[5]);
                         adminList.add(admin);
@@ -85,7 +85,7 @@ public class GestionUsuarios {
                 + admin.getDepo());
             }
             for (Cashier cashier : cashierList) {
-                writer.println("cashier," +
+                writer.println("Cashier," +
                         cashier.getId() + "," +
                         cashier.getName() + "," +
                         cashier.getEmail() + "," +
@@ -93,7 +93,7 @@ public class GestionUsuarios {
                         cashier.getWorkerId());
             }
             for (Client client : clientList) {
-                writer.println("client," +
+                writer.println("Client," +
                         client.getId() + "," +
                         client.getName() + "," +
                         client.getEmail() + "," +
