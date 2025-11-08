@@ -22,6 +22,8 @@ public class ConsultaSaldoController {
 
     @FXML
     void onConsultarSaldo(ActionEvent event) {
+        this.gestorCuentas = new GestorCuentas();
+        this.gestorCuentas.cargarCuentas();
         String cuenta = txtCuenta.getText().trim();
         String cuentaCompleta = "BUQ-"+cuenta;
         if(cuenta.isEmpty()){
