@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import models.CuentasBancarias.GestorCuentas;
 import models.Usuarios.Cashier;
 import models.Usuarios.GestionUsuarios;
 
@@ -47,6 +48,7 @@ public class DashboardCajeroController {
     private BorderPane mainBorderPane;
     private Cashier cashier;
     private GestionUsuarios gestionUsuarios;
+    private GestorCuentas gestorCuentas;
 
 
     public void setCashier(Cashier cashier){
@@ -83,7 +85,12 @@ public class DashboardCajeroController {
 
     @FXML
     void onRealizarDeposito() throws IOException {
-        AnchorPane panelRealizarDepositos = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/DepositosView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/DepositosView.fxml"));
+        AnchorPane panelRealizarDepositos = loader.load();
+
+        DepositosViewController controller = loader.getController();
+        controller.setPanelContenido(panelContenido);
+        controller.setGestorCuentas(gestorCuentas);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelRealizarDepositos);
     }
