@@ -14,6 +14,7 @@ public class GestionUsuarios {
         adminList = new ArrayList<>();
         cashierList = new ArrayList<>();
         clientList = new ArrayList<>();
+        cargarUsuarios();
     }
 
     public ArrayList<Admin> getAdminList() {
@@ -44,6 +45,9 @@ public class GestionUsuarios {
         if(!archivo.exists()){
             return true;
         }
+        adminList.clear();
+        cashierList.clear();
+        clientList.clear();
         try(BufferedReader reader = new BufferedReader(new FileReader(archivo))){
             String linea;
             while((linea = reader.readLine())!=null){
@@ -135,5 +139,77 @@ public class GestionUsuarios {
         adminList.removeIf(a -> a.getId().equals(id));
         return guardarUsuarios();
     }
+    public boolean modificarCajero(String id, String nombre, String email, String password) {
+        Cashier cajero = buscarCajero(id);
+        if (cajero != null) {
+            cajero.setName(nombre);
+            cajero.setEmail(email);
+            cajero.setPassword(password);
+            guardarUsuarios();
+            return true;
+        }
+        return false;
+    }
+    public boolean modificarCliente(String id, String nombre, String email,
+                                    String password, String telefono, String direccion) {
+        Client cliente = buscarCliente(id);
+        if (cliente != null) {
+            cliente.setName(nombre);
+            cliente.setEmail(email);
+            cliente.setPassword(password);
+            cliente.setPhone(telefono);
+            cliente.setAdress(direccion);
+            guardarUsuarios();
+            return true;
+        }
+        return false;
+    }
+    public Client buscarCliente(String id) {
+        for (Client cliente : clientList) {
+            if (cliente.getId().equals(id)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public Cashier buscarCajero(String id) {
+        for (Cashier cajero : cashierList) {
+            if (cajero.getId().equals(id)) {
+                return cajero;
+            }
+        }
+        return null;
+    }
+    public Admin buscarAdmin(String id) {
+        for (Admin admin : adminList) {
+            if (admin.getId().equals(id)) {
+                return admin;
+            }
+        }
+        return null;
+    }
+    private Object usuarioPorId(String id){
+        if(buscarCajero(id)!= null){
+            return buscarCajero(id);
+        }
+        if(buscarCliente(id)!= null){
+            return buscarCliente(id);
+        }
+        if(buscarAdmin(id)!= null){
+            return buscarAdmin(id);
+        }
+        return null;
+    }
+    public boolean addCashier(String id, String name, String email, String password, String workerId) {
+        if (usuarioPorId(id) != null) {
+            return false;
+        }
+        Cashier newCashier = new Cashier(id, name, email, password, workerId);
+        cashierList.add(newCashier);
+        return guardarUsuarios();
+    }
+
+
 }
 

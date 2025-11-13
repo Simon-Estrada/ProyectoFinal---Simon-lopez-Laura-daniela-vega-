@@ -50,7 +50,7 @@ public class LoginController {
             return;
         }
         String id = txtId.getText().trim();
-        String password = txtPassword.getText();
+        String password = txtPassword.getText().trim();
 
         for (Client client : gestor.getClientList()) {
             if (client.getId().equals(id) && client.getPassword().equals(password)) {
@@ -139,7 +139,7 @@ public class LoginController {
 
             DashboardAdministradoresController controller = loader.getController();
             controller.setAdmin(admin);
-            controller.setGestor(gestor);
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

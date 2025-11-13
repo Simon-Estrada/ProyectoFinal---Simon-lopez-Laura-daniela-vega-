@@ -6,9 +6,9 @@ public class Client extends Usuario {
     private String phone;
     private String adress;
 
-    public Client(String id, String name, String username,
+    public Client(String id, String name, String email,
                   String password, String phone, String adress) {
-        super(id, name, username, password);
+        super(id, name, email, password);
         this.phone = phone;
         this.adress = adress;
     }
@@ -24,5 +24,13 @@ public class Client extends Usuario {
 
     public String getAdress() {
         return adress;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 }

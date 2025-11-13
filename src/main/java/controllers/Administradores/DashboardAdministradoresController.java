@@ -38,15 +38,15 @@ public class DashboardAdministradoresController {
     @FXML
     private BorderPane mainBorderPane;
     private Admin admin;
-    private GestionUsuarios gestionUsuarios;
+    private GestionUsuarios gestorDatos;
+    @FXML
+    public void initialize() {
+        this.gestorDatos = new GestionUsuarios();
+    }
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
         lblNombreUsuario.setText(admin.getName() + " " + admin.getId());
-    }
-
-    public void setGestor(GestionUsuarios gestor) {
-        this.gestionUsuarios = gestor;
     }
 
     private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
@@ -59,13 +59,23 @@ public class DashboardAdministradoresController {
 
     @FXML
     void OnRegistrarEmpleados() throws IOException {
-        AnchorPane panelRegistrarEmpleadosFXML = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Administradores/RegistroEmpleados.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Administradores/RegistroEmpleados.fxml"));
+        AnchorPane panelRegistrarEmpleadosFXML = loader.load();
+        RegistroEmpleadosController controller =loader.getController();
+        controller.setPanelContenido(panelContenido);
+        GestionUsuarios gestorDatos = new GestionUsuarios();
+        controller.setGestionUsuarios(this.gestorDatos);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelRegistrarEmpleadosFXML);
     }
     @FXML
     void cargarEmpleados() throws IOException {
-        AnchorPane panelCargarEmpleadosFXML = FXMLLoader.load(getClass().getResource("/com/example/proyectofinal/Administradores/TablaEmpleados.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Administradores/TablaEmpleados.fxml"));
+        AnchorPane panelCargarEmpleadosFXML = loader.load();
+        TablaEmpleadosController controller = loader.getController();
+        GestionUsuarios gestorDatos = new GestionUsuarios();
+        gestorDatos.cargarUsuarios();
+        controller.setGestionUsuarios(gestorDatos);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelCargarEmpleadosFXML);
     }

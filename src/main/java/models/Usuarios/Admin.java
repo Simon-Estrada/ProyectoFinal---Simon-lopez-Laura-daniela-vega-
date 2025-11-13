@@ -1,11 +1,7 @@
 package models.Usuarios;
 
 public class Admin extends Usuario {
-    //Funcionalidades de administrador
-    //Gestion de empleados
-    //Seguridad y autentificacion
-    //Monitoreo de models.transacciones
-    //Generacion de reportes
+
     private String depo;
 
     public Admin(String id, String name, String email, String password, String depo) {
