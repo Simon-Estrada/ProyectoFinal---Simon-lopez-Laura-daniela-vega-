@@ -97,7 +97,10 @@ public class DashboardCajeroController {
 
     @FXML
     void onRealizarTransferencias() throws IOException {
-        AnchorPane panelRealizarTransferencias = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/TransferenciasView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/TransferenciasView.fxml"));
+        AnchorPane panelRealizarTransferencias = loader.load();
+        TransferenciasViewController controllerHijo = loader.getController();
+        controllerHijo.setPanelContenido(panelContenido);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelRealizarTransferencias);
     }
@@ -114,7 +117,10 @@ public class DashboardCajeroController {
 
     @FXML
     void onRetirar() throws IOException {
-        AnchorPane panelRetirar = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Cajeros/RetirosView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Cajeros/RetirosView.fxml"));
+        AnchorPane panelRetirar = loader.load();
+        RetirosViewController controllerHijo = loader.getController();
+        controllerHijo.setPanelContenido(panelContenido);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelRetirar);
     }

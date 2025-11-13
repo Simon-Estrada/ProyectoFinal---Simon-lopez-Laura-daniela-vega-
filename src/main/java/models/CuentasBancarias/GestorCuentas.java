@@ -15,6 +15,7 @@ public class GestorCuentas {
         return accountsList;
     }
     public boolean cargarCuentas(){
+        accountsList.clear();
         File archivo = new File(ARCHIVO);
         if(!archivo.exists()){
             return  true;
@@ -162,17 +163,20 @@ public class GestorCuentas {
         Account cuentaOrigen = buscarCuenta(cuentaOrigenNum);
         Account cuentaDestino = buscarCuenta(cuentaDestinoNum);
 
-        if (cuentaOrigen == null || cuentaDestino == null) {
+        if (cuentaOrigen == null || cuentaDestino == null || monto <= 0) {
             return false;
         }
 
-        if (monto <= 0) {
-            return false;
-        }
 
         if (cuentaOrigen.retirar(monto)) {
-            cuentaDestino.depositar(monto);
-            return guardarCuentas();
+            if(cuentaDestino.depositar(monto)){
+                return guardarCuentas();
+            } else{
+                cuentaOrigen.depositar(monto);
+                return false;
+            }
+
+
         }
 
         return false;

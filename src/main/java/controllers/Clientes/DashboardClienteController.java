@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import models.CuentasBancarias.GestorCuentas;
 import models.Usuarios.Client;
 import models.Usuarios.GestionUsuarios;
 
@@ -39,23 +40,37 @@ public class DashboardClienteController {
 
     private Client client;
     private GestionUsuarios gestionUsuarios;
+    private GestorCuentas gestorCuentas;
 
 
     public void setClient(Client client){
         this.client = client;
         lblNombreUsuario.setText(client.getName()+" "+client.getId());
     }
+
     public void setGestor(GestionUsuarios gestor){
         this.gestionUsuarios = gestor;
+    }
+    @FXML
+    public void initialize(){
+        this.gestorCuentas=new GestorCuentas();
+        this.gestorCuentas.cargarCuentas();
     }
 
 
 
     @FXML
     void cargarConsultarCuentas() throws IOException {
-        AnchorPane panelConsultarCuentasFXML = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Clientes/ResumenCuentas.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Clientes/ResumenCuentas.fxml"));
+        AnchorPane panelConsultarCuentasFXML = loader.load();
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelConsultarCuentasFXML);
+        ResumenCuentasController controller = loader.getController();
+        GestorCuentas gestorCompartido = this.gestorCuentas;
+        String idClienteLogeado = this.client.getId();
+        controller.setGestorCuentas(gestorCompartido);
+        controller.cargarDatosDelCliente(idClienteLogeado);
+
     }
 
     @FXML
@@ -77,7 +92,11 @@ public class DashboardClienteController {
 
     @FXML
     void onRealizarTransferencias() throws IOException {
-        AnchorPane panelRealizarTransferncias = FXMLLoader. load(getClass().getResource("/com/example/proyectofinal/Clientes/TransaccionesView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Clientes/TransaccionesView.fxml"));
+        AnchorPane panelRealizarTransferncias = loader.load();
+        TransaccionesViewController controller = loader.getController();
+        controller.setGestorCuentas(this.gestorCuentas);
+        controller.setClientId(this.client.getId());
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelRealizarTransferncias);
     }
