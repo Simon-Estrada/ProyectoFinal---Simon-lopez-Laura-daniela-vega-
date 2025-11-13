@@ -9,7 +9,7 @@
 <BorderPane fx:id="mainBorderPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Administradores.DashboardAdministradoresController">
 
     <left>
-        <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #435161;" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #182E6F;" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
             </padding>
@@ -24,19 +24,22 @@
 
             <Separator prefWidth="200.0" />
 
-            <Button fx:id="btnRegistroEmpleados" mnemonicParsing="false" onAction="#OnRegistrarEmpleados" prefWidth="180.0" style="-fx-background-color: #9DB5C9; -fx-background-radius: 10;" text="Registrar Empleados">
+            <Button fx:id="btnRegistroEmpleados" mnemonicParsing="false" onAction="#OnRegistrarEmpleados" prefWidth="180.0" style="-fx-background-color: #305CDE; -fx-background-radius: 10;" text="Registrar Empleados" textFill="WHITE">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor></Button>
-            <Button fx:id="btnEmpleados" mnemonicParsing="false" onAction="#cargarEmpleados" prefWidth="180.0" style="-fx-background-color: #9DB5C9; -fx-background-radius: 10;" text="Empleados">
+            <Button fx:id="btnEmpleados" mnemonicParsing="false" onAction="#cargarEmpleados" prefWidth="180.0" style="-fx-background-color: #305CDE; -fx-background-radius: 10;" text="Empleados" textFill="WHITE">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor></Button>
 
-            <VBox VBox.vgrow="ALWAYS" /> <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion" prefWidth="180.0" style="-fx-background-color: #E84A5F; -fx-background-radius: 10;" text="Cerrar Sesión">
+            <VBox VBox.vgrow="ALWAYS" /> <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion" prefWidth="180.0" style="-fx-background-color: #CD1C18; -fx-background-radius: 10;" text="Cerrar Sesión" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="HAND" />
-            </cursor></Button>
+            </cursor>
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
         </VBox>
     </left>
 
