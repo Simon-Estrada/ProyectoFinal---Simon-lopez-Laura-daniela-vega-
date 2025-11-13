@@ -111,12 +111,6 @@ public class RegistroClientesController {
             return;
         }
 
-        for (Client c : gestionUsuarios.getClientList()) {
-            if (c.getId().equals(txtIdentificacion.getText().trim())) {
-                mostrarAlerta("Error", "Ya existe un cliente con ese ID", Alert.AlertType.ERROR);
-                return;
-            }
-        }
         Client nuevoCliente = new Client(
                 txtIdentificacion.getText().trim(),
                 txtNombre.getText().trim(),

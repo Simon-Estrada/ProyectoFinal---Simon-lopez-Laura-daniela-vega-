@@ -3,3 +3,4 @@ Cashier,1090275087,Simon Estrada,wooseoksimon@gmail.com,Enhypen,5087
 Cashier,33817767,Adriana Estrada,adriana@gmail.com,adriana123,2908
 Client,1090275087,Simon Estrada,wooseosimon@gmail.com,simonetta,3207411485,calarca
 Client,24575419,Luz Marina,marina@gmail.com,luzma59,3146979602,Armenia
+Client,33817767,Adriana Estrada,adriana@gmail.com,adrianacliente,3137148918,calarca
