@@ -1,4 +1,5 @@
 Admin,1090275087,Simon Estrada,wooseoksimon@gmail.com,simon123,administracion
+Admin,1092457849,Laura Daniela Vega Herrera,danielita@gmail.com,daniela123,Sistemas
 Cashier,1090275087,Simon Estrada,wooseoksimon@gmail.com,Enhypen,5087
 Cashier,33817767,Adriana Estrada,adriana@gmail.com,adriana123,2908
 Client,1090275087,Simon Estrada,wooseosimon@gmail.com,simonetta,3207411485,calarca

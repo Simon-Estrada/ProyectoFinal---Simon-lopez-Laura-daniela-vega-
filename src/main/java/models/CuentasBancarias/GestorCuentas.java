@@ -160,25 +160,27 @@ public class GestorCuentas {
 
 
     public boolean realizarTransferencia(String cuentaOrigenNum, String cuentaDestinoNum, double monto) {
+
         Account cuentaOrigen = buscarCuenta(cuentaOrigenNum);
         Account cuentaDestino = buscarCuenta(cuentaDestinoNum);
-
-        if (cuentaOrigen == null || cuentaDestino == null || monto <= 0) {
+        double saldoOriginalOrigen = cuentaOrigen.getBalance();
+        try {
+            if (cuentaOrigen.retirar(monto)) {
+                if (cuentaDestino.depositar(monto)) {
+                    if (!guardarCuentas()) {
+                        cuentaOrigen.setBalance(saldoOriginalOrigen);
+                        return false;
+                    }
+                    return true;
+                } else {
+                    cuentaOrigen.depositar(monto);
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            cuentaOrigen.setBalance(saldoOriginalOrigen);
             return false;
         }
-
-
-        if (cuentaOrigen.retirar(monto)) {
-            if(cuentaDestino.depositar(monto)){
-                return guardarCuentas();
-            } else{
-                cuentaOrigen.depositar(monto);
-                return false;
-            }
-
-
-        }
-
         return false;
     }
 

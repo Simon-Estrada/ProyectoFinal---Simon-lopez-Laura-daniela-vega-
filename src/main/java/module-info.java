@@ -3,6 +3,7 @@ module com.example.proyectofinal {
     requires javafx.fxml;
     requires javafx.graphics;
 
+
     opens models.Usuarios to javafx.base;
     opens com.example.proyectofinal to javafx.fxml;
     exports com.example.proyectofinal;

@@ -21,6 +21,9 @@ import java.util.Objects;
 public class DashboardAdministradoresController {
 
     @FXML
+    private Button btnAdministradores;
+
+    @FXML
     private Button btnCerrarSesion;
 
     @FXML
@@ -29,11 +32,13 @@ public class DashboardAdministradoresController {
     @FXML
     private Button btnRegistroEmpleados;
 
+
     @FXML
     private AnchorPane panelContenido;
 
     @FXML
     private Label lblNombreUsuario;
+
 
     @FXML
     private BorderPane mainBorderPane;
@@ -94,6 +99,19 @@ public class DashboardAdministradoresController {
             mostrarAlerta("Error", "No se pudo encontrar la vista.", Alert.AlertType.ERROR);
         }
         stageActual.close();
+    }
+
+    @FXML
+    void cargarAdministradores() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Administradores/RegistroAdministradores.fxml"));
+        AnchorPane panelCargarAdministradoresFXML = loader.load();
+        RegistroAdministradoresController controller = loader.getController();
+        GestionUsuarios gestorDatos = new GestionUsuarios();
+        gestorDatos.cargarUsuarios();
+        controller.setGestionUsuarios(gestorDatos);
+        panelContenido.getChildren().clear();
+        panelContenido.getChildren().add(panelCargarAdministradoresFXML);
+
     }
 
 }

@@ -209,8 +209,14 @@ public class GestionUsuarios {
         cashierList.add(newCashier);
         return guardarUsuarios();
     }
-
-
+    public boolean addAdmin(String id, String name, String email, String password, String depo){
+        if(usuarioPorId(id)!= null){
+            return false;
+        }
+        Admin newAdmin = new Admin (id, name, email,password, depo);
+        adminList.add(newAdmin);
+        return guardarUsuarios();
+    }
 
 }
 
