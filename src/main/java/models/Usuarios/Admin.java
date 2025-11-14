@@ -18,4 +18,8 @@ public class Admin extends Usuario {
     public String getDepo() {
         return depo;
     }
+
+    public void setDepo(String depo) {
+        this.depo = depo;
+    }
 }

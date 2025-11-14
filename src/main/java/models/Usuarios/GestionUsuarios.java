@@ -164,6 +164,18 @@ public class GestionUsuarios {
         }
         return false;
     }
+    public boolean modificarAdmin(String id, String nombre, String email,
+                                    String password, String depo) {
+        Admin admin = buscarAdmin(id);
+        if (admin != null) {
+            admin.setName(nombre);
+            admin.setEmail(email);
+            admin.setPassword(password);
+            guardarUsuarios();
+            return true;
+        }
+        return false;
+    }
     public Client buscarCliente(String id) {
         for (Client cliente : clientList) {
             if (cliente.getId().equals(id)) {

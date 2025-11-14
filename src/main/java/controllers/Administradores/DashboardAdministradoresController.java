@@ -106,12 +106,12 @@ public class DashboardAdministradoresController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/proyectofinal/Administradores/RegistroAdministradores.fxml"));
         AnchorPane panelCargarAdministradoresFXML = loader.load();
         RegistroAdministradoresController controller = loader.getController();
-        GestionUsuarios gestorDatos = new GestionUsuarios();
-        gestorDatos.cargarUsuarios();
+        controller.setPanelContenido(panelContenido);
         controller.setGestionUsuarios(gestorDatos);
         panelContenido.getChildren().clear();
         panelContenido.getChildren().add(panelCargarAdministradoresFXML);
 
     }
+
 
 }
